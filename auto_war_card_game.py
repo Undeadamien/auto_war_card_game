@@ -29,7 +29,7 @@ class Game:
         self.red_pile_pos = (self.size[0]//2-self.card_size[0]//2, self.size[1]//2)
         self.red_pile = []
 
-        self.sprites = []#[pos, end, color]
+        self.sprites = []  # [pos, end, color]
         
     class Card:
 
@@ -66,7 +66,6 @@ class Game:
             x, y = sprite[0]
             x1, y1 = sprite[1]
 
-            #if arrive delete
             if x1-speed <= x <= x1+speed and y1-speed <= y <= y1+speed:
                 self.sprites.remove(sprite) 
             #right
@@ -88,7 +87,6 @@ class Game:
                                 sprite[0],
                                 (14*self.card_size[0], color*self.card_size[1], self.card_size[0], self.card_size[1]))
 
-
     def draw_decks(self):
 
         for pos, color in [[self.black_deck_pos, 2], [self.red_deck_pos, 3]]:
@@ -104,7 +102,6 @@ class Game:
                 image = [card.image, (14*self.card_size[0], color*self.card_size[1], self.card_size[0], self.card_size[1])] [x%2]
                 self.surface.blit(self.cards_sprite, ((pos[0]+20*x)-10*x, pos[1]), image)
 
-#initialise
 game = Game()
 game.prepare_deck()
 
@@ -160,11 +157,10 @@ while game.running:
 
     game.draw_decks()
     pygame.display.update()
-    #stop the programm to show the cards
+    #pause the programm to show the cards
     if not game.giving_cards and not game.removing_cards and not(len(game.black_pile) == 0 and len(game.red_pile) == 0):
         sleep(0.5)
 
-    #event handler
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             game.running = False
