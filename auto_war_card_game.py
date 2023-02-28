@@ -140,10 +140,12 @@ while game.running:
         # check if the piles are empty or with even numbers of cards
         if (len(game.black_pile) % 2 == 0 and len(game.red_pile) % 2 == 0) or game.black_pile[-1].value == game.red_pile[-1].value:
 
-            game.sprites.append([game.black_deck_pos, game.black_pile_pos,
+            game.sprites.append([game.black_deck_pos, 
+                                 game.black_pile_pos,
                                  "black"])
 
-            game.sprites.append([game.red_deck_pos, game.red_pile_pos,
+            game.sprites.append([game.red_deck_pos, 
+                                 game.red_pile_pos,
                                  "red"])
 
             game.black_pile.append(game.black_deck.pop(0))
